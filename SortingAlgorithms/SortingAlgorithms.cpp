@@ -103,35 +103,19 @@ std::vector<int> generate_int_vector(const size_t size, const int min, const int
  * Space complexity: O(1)
  */
 void insertion_sort(std::vector<int>& v) {
-	const auto size = v.size();
+	const auto size = static_cast<int>(v.size());
 
 	if (size < 2)
 		return;
 
-	bool swapping = false;
-	int temp{};
+	for (int i = 1; i < size; i++) {
+		int j = i - 1;
+		const auto val = v[i];
+		
+		for(;j > 0 && v[j] > val; j--)
+			v[j + 1] = v[j];
 
-	for (size_t i = 1; i < size; i++) {
-		for (size_t j = i - 1;; j--) {
-			if (swapping) {
-				if (v[j] > temp)
-					v[j + 1] = v[j];
-				else {
-					v[j + 1] = temp;
-					break;
-				}
-			}
-			else {
-				if (v[j] > v[i]) {
-					swapping = true;
-					temp = v[i];
-					v[i] = v[j];
-				}
-			}
-
-			if (!j)
-				break;
-		}
+		v[j] = val;
 	}
 }
 
