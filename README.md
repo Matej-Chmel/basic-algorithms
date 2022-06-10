@@ -1,6 +1,11 @@
 # Sorting algorithms
 ## Progress
 - [x] Bubble sort
-- [x] Merge sort
+- [ ] Bucket sort
+- [ ] Counting sort
+- [ ] Heap sort
 - [x] Insertion sort
+- [x] Merge sort
+- [ ] Quick sort
+- [ ] Radix sort
 - [x] Selection sort
