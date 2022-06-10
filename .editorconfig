@@ -1,0 +1,17 @@
+[*.{cpp,hpp}]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+# ReSharper properties
+resharper_cpp_alignment_tab_fill_style = use_tabs_only
+resharper_cpp_anonymous_method_declaration_braces = end_of_line
+resharper_cpp_case_block_braces = end_of_line
+resharper_cpp_empty_block_style = together_same_line
+resharper_cpp_indent_style = tab
+resharper_cpp_invocable_declaration_braces = end_of_line
+resharper_cpp_other_braces = end_of_line
+resharper_cpp_type_declaration_braces = end_of_line
+resharper_namespace_declaration_braces = end_of_line
+resharper_requires_expression_braces = end_of_line
+resharper_simple_block_style = on_single_line
