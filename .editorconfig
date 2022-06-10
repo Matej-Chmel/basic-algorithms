@@ -1,17 +1,55 @@
-[*.{cpp,hpp}]
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
 indent_style = tab
-indent_size = tab
+insert_final_newline = true
 tab_width = 4
+trim_trailing_whitespace = true
 
 # ReSharper properties
+resharper_break_template_declaration = on_single_line
 resharper_cpp_alignment_tab_fill_style = use_tabs_only
 resharper_cpp_anonymous_method_declaration_braces = end_of_line
 resharper_cpp_case_block_braces = end_of_line
 resharper_cpp_empty_block_style = together_same_line
 resharper_cpp_indent_style = tab
 resharper_cpp_invocable_declaration_braces = end_of_line
+resharper_cpp_keep_blank_lines_in_code = 1
+resharper_cpp_keep_blank_lines_in_declarations = 1
+resharper_cpp_keep_user_linebreaks = false
+resharper_cpp_max_line_length = 80
 resharper_cpp_other_braces = end_of_line
+resharper_cpp_space_after_colon_in_case = false
+resharper_cpp_space_after_keywords_in_control_flow_statements = false
 resharper_cpp_type_declaration_braces = end_of_line
+resharper_cpp_wrap_after_declaration_lpar = true
+resharper_cpp_wrap_after_invocation_lpar = true
+resharper_cpp_wrap_arguments_style = chop_if_long
+resharper_cpp_wrap_before_declaration_rpar = true
+resharper_cpp_wrap_before_invocation_rpar = true
+resharper_cpp_wrap_parameters_style = chop_if_long
+resharper_function_declaration_return_type_style = on_single_line
+resharper_function_definition_return_type_style = on_single_line
+resharper_indent_class_members_from_access_specifiers = true
+resharper_indent_preprocessor_directives = normal
+resharper_line_break_after_colon_in_member_initializer_lists = on_single_line
+resharper_line_break_before_requires_clause = on_single_line
+resharper_linkage_specification_indentation = all
+resharper_member_initializer_list_style = on_single_line
 resharper_namespace_declaration_braces = end_of_line
 resharper_requires_expression_braces = end_of_line
 resharper_simple_block_style = on_single_line
+resharper_simple_case_statement_style = line_break
+resharper_simple_embedded_statement_style = line_break
+resharper_space_after_comma_in_enum = false
+resharper_space_after_ptr_in_data_members = true
+resharper_space_before_ptr_in_data_members = false
+resharper_space_before_template_params = false
+resharper_toplevel_function_declaration_return_type_style = on_single_line
+resharper_toplevel_function_definition_return_type_style = on_single_line
+resharper_wrap_before_colon = true
+resharper_wrap_braced_init_list_style = chop_if_long
+resharper_wrap_ctor_initializer_style = chop_if_long
+resharper_wrap_enumeration_style = chop_always
