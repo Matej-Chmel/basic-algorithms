@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
@@ -27,10 +28,14 @@ static auto operator<<(
 ) -> std::ostream&;
 static auto bubble_sort(std::vector<int>& v) -> void;
 static auto generate_int_vector(
-	size_t size, int min, int max
+	size_t size,
+	int min,
+	int max
 ) -> std::vector<int>;
 static auto insertion_sort(std::vector<int>& v) -> void;
 static auto is_sorted(const std::vector<int>& v) -> bool;
+static auto merge(std::vector<int>& a, std::vector<int>& b) -> std::vector<int>;
+static auto merge_sort(std::vector<int>& v) -> void;
 static auto run_all_algos(size_t size) -> void;
 static auto run_test(size_t size, SortAlgoType type) -> void;
 static auto run_with_sizes(const std::vector<int>& sizes) -> void;
@@ -62,19 +67,21 @@ AppError::AppError(const std::string& s) : exception(s.c_str()) {}
 
 /**
  * Time complexity.
+ *
  * Best case: O(n)
+ * When array is already sorted. Single pass.
+ *
  * Average & worst case: O(n^2)
+ * Derived from the two nested loops. Worst case if sorted the other way.
  *
  * Space complexity: O(1)
+ * No new space tied to the size of the array is needed.
  */
 auto bubble_sort(std::vector<int>& v) -> void {
-	const auto size = v.size();
-	const auto last_idx = size - 1;
-
-	for(size_t i = 1; i < size; i++) {
+	for(size_t i = 1; i < v.size(); i++) {
 		auto swapped = false;
 
-		for(size_t j = 0; j < last_idx; j++) {
+		for(size_t j = 0; j < v.size() - 1; j++) {
 			const auto next_idx = j + 1;
 
 			if(v[j] > v[next_idx]) {
@@ -107,16 +114,19 @@ auto generate_int_vector(
 }
 
 /**
+ * Incremental approach. Best for almost-sorted arrays.
+ *
  * Time complexity: O(n^2)
+ * Derived from two nested loops.
+ *
  * Space complexity: O(1)
+ * No new space tied to the size of the array is needed.
  */
 auto insertion_sort(std::vector<int>& v) -> void {
-	const auto size = static_cast<int>(v.size());
-
-	if(size < 2)
+	if(v.size() < 2)
 		return;
 
-	for(auto i = 1; i < size; i++) {
+	for(auto i = 1; i < static_cast<int>(v.size()); i++) {
 		auto j = i - 1;
 		const auto val = v[i];
 
@@ -131,19 +141,75 @@ auto is_sorted(const std::vector<int>& v) -> bool {
 	if(v.size() < 2)
 		return true;
 
-	const auto last_idx = v.size() - 1;
-
-	for(size_t i = 1; i < last_idx; i++)
+	for(size_t i = 1; i < v.size() - 1; i++)
 		if(v[i] < v[i - 1])
 			return false;
 	return true;
 }
 
-auto merge_sort(std::vector<int>& v) -> void {}
+/**
+ * Used by merge_sort to merge two sub-arrays
+ * into an array of their combined length.
+ */
+auto merge(std::vector<int>& a, std::vector<int>& b) -> std::vector<int> {
+	std::vector<int> res;
+
+	size_t idx_a = 0, idx_b = 0;
+
+	while(idx_a < a.size() && idx_b < b.size())
+		if(a[idx_a] < b[idx_b]) {
+			res.emplace_back(a[idx_a]);
+			idx_a++;
+		}
+		else {
+			res.emplace_back(b[idx_b]);
+			idx_b++;
+		}
+
+	// Now, a or b is empty.
+
+	while(idx_a < a.size()) {
+		res.emplace_back(a[idx_a]);
+		idx_a++;
+	}
+
+	while(idx_b < b.size()) {
+		res.emplace_back(b[idx_b]);
+		idx_b++;
+	}
+
+	return res;
+}
+
+/**
+ * Recursive. Divide & conquer.
+ *
+ * Time complexity: O(n * log n)
+ * The maximum height of a balanced tree is log(n) and in every level,
+ * a single pass is needed to merge two sub-arrays.
+ *
+ * Space complexity: O(n)
+ * In total, space for one extra array of the same size
+ * is needed to represent all the sub-arrays.
+ */
+auto merge_sort(std::vector<int>& v) -> void {
+	if(v.size() < 2)
+		return;
+
+	const auto half = v.begin() + static_cast<std::vector<
+		int>::iterator::difference_type>(v.size() / 2);
+	std::vector<int> left(v.begin(), half);
+	std::vector<int> right(half + 1, v.end());
+
+	merge_sort(left);
+	merge_sort(right);
+	v = merge(left, right);
+}
 
 auto run_all_algos(const size_t size) -> void {
 	run_test(size, SortAlgoType::BUBBLE);
 	run_test(size, SortAlgoType::INSERTION);
+	run_test(size, SortAlgoType::MERGE);
 	run_test(size, SortAlgoType::SELECTION);
 	std::cout << "[PASSED] " << "Test size: " << size << '\n';
 }
@@ -183,15 +249,13 @@ auto run_with_sizes(const std::vector<int>& sizes) -> void {
  * Space complexity: O(1).
  */
 auto selection_sort(std::vector<int>& v) -> void {
-	const auto size = v.size();
-
-	if(size < 2)
+	if(v.size() < 2)
 		return;
 
-	for(size_t i = 0; i < size; i++) {
+	for(size_t i = 0; i < v.size(); i++) {
 		auto min_idx = i;
 
-		for(auto j = i; j < size; j++)
+		for(auto j = i; j < v.size(); j++)
 			if(v[j] < v[min_idx])
 				min_idx = j;
 
