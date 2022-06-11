@@ -36,10 +36,15 @@ namespace chm {
 	 */
 	auto bubble_sort(std::vector<int>& v) -> void;
 	/**
+	 * Creates a max heap from the input array.
+	 * Each iteration swaps root and last leaf, sorting largest elements first.
+	 * After this modification, the array is heapified and the process repeats.
 	 *
+	 * Time complexity: O(n * log n)
+	 * build_max_heap: O(n)
+	 * heapify: O(log n), called by build_max_heap repeatedly.
 	 *
-	 * Time complexity: O()
-	 * Space complexity: O()
+	 * Space complexity: O(1)
 	 */
 	auto heap_sort(std::vector<int>& v) -> void;
 	/**
