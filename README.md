@@ -1,5 +1,10 @@
-# Sorting algorithms
-## Progress
+# Basic algorithms
+
+## Search
+- [ ] Binary search
+- [x] Sequential search
+
+## Sorting
 - [x] Bubble sort
 - [ ] Bucket sort
 - [ ] Counting sort
