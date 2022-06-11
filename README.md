@@ -1,7 +1,7 @@
 # Basic algorithms
 
 ## Search
-- [ ] Binary search
+- [x] Binary search
 - [x] Sequential search
 
 ## Sorting

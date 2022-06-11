@@ -16,6 +16,7 @@ namespace chm {
 	) -> std::ostream&;
 	auto generate_int(int min, int max) -> int;
 	auto generate_int_vector(size_t size, int min, int max) -> std::vector<int>;
+	auto sorted(const std::vector<int>& v) -> std::vector<int>;
 
 	template<typename T> auto AppError::operator<<(const T& t) -> AppError {
 		std::stringstream stream;

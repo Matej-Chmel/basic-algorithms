@@ -44,4 +44,10 @@ namespace chm {
 
 		return res;
 	}
+
+	auto sorted(const std::vector<int>& v) -> std::vector<int> {
+		auto copy = v;
+		std::sort(copy.begin(), copy.end());
+		return copy;
+	}
 }
