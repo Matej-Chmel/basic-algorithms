@@ -1,25 +1,61 @@
 #include "sort_algos.hpp"
 
 namespace chm {
+	auto build_max_heap(std::vector<int>& v) -> void;
+	auto heapify(std::vector<int>& v, size_t i, size_t n) -> void;
+	auto merge(std::vector<int>& a, std::vector<int>& b) -> std::vector<int>;
+	auto swap(int& a, int& b) noexcept -> void;
+
 	AppError::AppError(const std::string& s) : exception(s.c_str()) {}
 
 	auto bubble_sort(std::vector<int>& v) -> void {
 		for(size_t i = 1; i < v.size(); i++) {
 			auto swapped = false;
 
-			for(size_t j = 0; j < v.size() - 1; j++) {
-				const auto next_idx = j + 1;
-
-				if(v[j] > v[next_idx]) {
-					const auto temp = v[j];
-					v[j] = v[next_idx];
-					v[next_idx] = temp;
+			for(size_t j = 0; j < v.size() - 1; j++)
+				if(const auto next_idx = j + 1; v[j] > v[next_idx]) {
+					swap(v[j], v[next_idx]);
 					swapped = true;
 				}
-			}
 
 			if(!swapped)
 				break;
+		}
+	}
+
+	/**
+	 * Called by heap_sort.
+	 */
+	auto build_max_heap(std::vector<int>& v) -> void {
+		for(auto i = static_cast<int>(v.size() / 2 - 1); i >= 0; i--)
+			heapify(v, static_cast<size_t>(i), v.size());
+	}
+
+	auto heap_sort(std::vector<int>& v) -> void {
+		if(v.empty())
+			return;
+
+		build_max_heap(v);
+
+		for(auto i = v.size() - 1; i > 0; i--) {
+			swap(v[0], v[i]);
+			heapify(v, 0, i);
+		}
+	}
+
+	/**
+	 * Called by heap_sort.
+	 */
+	auto heapify(std::vector<int>& v, const size_t i, const size_t n) -> void {
+		const auto left = 2 * i + 1;
+		auto max_idx = left < n && v[left] > v[i] ? left : i;
+
+		if(const auto right = left + 1; right < n && v[right] > v[max_idx])
+			max_idx = right;
+
+		if(max_idx != i) {
+			swap(v[i], v[max_idx]);
+			heapify(v, max_idx, n);
 		}
 	}
 
@@ -39,7 +75,7 @@ namespace chm {
 	}
 
 	/**
-	* Used by merge_sort to merge two sub-arrays
+	* Called by merge_sort to merge two sub-arrays
 	* into an array of their combined length.
 	*/
 	auto merge(std::vector<int>& a, std::vector<int>& b) -> std::vector<int> {
@@ -78,8 +114,8 @@ namespace chm {
 
 		const auto half = v.begin() + static_cast<std::vector<
 			int>::iterator::difference_type>(v.size() / 2);
-		std::vector<int> left(v.begin(), half);
-		std::vector<int> right(half + 1, v.end());
+		std::vector left(v.begin(), half);
+		std::vector right(half + 1, v.end());
 
 		merge_sort(left);
 		merge_sort(right);
@@ -97,18 +133,23 @@ namespace chm {
 				if(v[j] < v[min_idx])
 					min_idx = j;
 
-			if(min_idx != i) {
-				const auto temp = v[i];
-				v[i] = v[min_idx];
-				v[min_idx] = temp;
-			}
+			if(min_idx != i)
+				swap(v[i], v[min_idx]);
 		}
+	}
+
+	auto swap(int& a, int& b) noexcept -> void {
+		const auto temp = a;
+		a = b;
+		b = temp;
 	}
 
 	auto to_string(const SortAlgoType t) -> std::string {
 		switch(t) {
 		case SortAlgoType::BUBBLE:
 			return "BUBBLE";
+		case SortAlgoType::HEAP:
+			return "HEAP";
 		case SortAlgoType::INSERTION:
 			return "INSERTION";
 		case SortAlgoType::MERGE:

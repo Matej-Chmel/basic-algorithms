@@ -1,5 +1,5 @@
 #include "sort_test.hpp"
-
+#include <algorithm>
 #include <iostream>
 #include <random>
 
@@ -40,17 +40,12 @@ namespace chm {
 	}
 
 	auto is_sorted(const std::vector<int>& v) -> bool {
-		if(v.size() < 2)
-			return true;
-
-		for(size_t i = 1; i < v.size() - 1; i++)
-			if(v[i] < v[i - 1])
-				return false;
-		return true;
+		return std::is_sorted(v.begin(), v.end());
 	}
 
 	auto run_all_algos(const size_t size) -> void {
 		run_test(size, SortAlgoType::BUBBLE);
+		run_test(size, SortAlgoType::HEAP);
 		run_test(size, SortAlgoType::INSERTION);
 		run_test(size, SortAlgoType::MERGE);
 		run_test(size, SortAlgoType::SELECTION);
@@ -65,6 +60,9 @@ namespace chm {
 		case SortAlgoType::BUBBLE:
 			bubble_sort(vec);
 			break;
+		case SortAlgoType::HEAP:
+			heap_sort(vec);
+			break;
 		case SortAlgoType::INSERTION:
 			insertion_sort(vec);
 			break;
@@ -76,10 +74,9 @@ namespace chm {
 			break;
 		}
 
-		if(!is_sorted(vec)) {
+		if(!is_sorted(vec))
 			throw AppError("[FAILED] {vec: ") << vec_copy << ", " << "algo: " <<
 				to_string(type) << '}';
-		}
 	}
 
 	auto run_with_sizes(const std::vector<int>& sizes) -> void {
