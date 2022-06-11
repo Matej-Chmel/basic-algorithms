@@ -13,6 +13,7 @@ namespace chm {
 
 	enum class SortAlgoType {
 		BUBBLE,
+		HEAP,
 		INSERTION,
 		MERGE,
 		SELECTION
@@ -32,8 +33,15 @@ namespace chm {
 	 *
 	 * Space complexity: O(1)
 	 * No new space tied to the size of the array is needed.
-	*/
+	 */
 	auto bubble_sort(std::vector<int>& v) -> void;
+	/**
+	 *
+	 *
+	 * Time complexity: O()
+	 * Space complexity: O()
+	 */
+	auto heap_sort(std::vector<int>& v) -> void;
 	/**
 	 * Incremental approach. Best for almost-sorted arrays.
 	 * Splits array into sorted and unsorted sections.
@@ -44,7 +52,7 @@ namespace chm {
 	 *
 	 * Space complexity: O(1)
 	 * No new space tied to the size of the array is needed.
-	*/
+	 */
 	auto insertion_sort(std::vector<int>& v) -> void;
 	/**
 	 * Recursive. Divide & conquer.
@@ -57,14 +65,14 @@ namespace chm {
 	 * Space complexity: O(n)
 	 * In total, space for one extra array of the same size
 	 * is needed to represent all the sub-arrays.
-	*/
+	 */
 	auto merge_sort(std::vector<int>& v) -> void;
 	/**
 	 * In each iteration, finds minimum and replaces it with current index.
 	 *
 	 * Time complexity, all cases: O(n^2).
 	 * Space complexity: O(1).
-	*/
+	 */
 	auto selection_sort(std::vector<int>& v) -> void;
 	auto to_string(SortAlgoType t) -> std::string;
 
