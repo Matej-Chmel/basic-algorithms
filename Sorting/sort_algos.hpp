@@ -1,16 +1,8 @@
 #pragma once
-#include <exception>
-#include <sstream>
 #include <string>
 #include <vector>
 
 namespace chm {
-	class AppError final : public std::exception {
-	public:
-		explicit AppError(const std::string& s);
-		template<typename T> auto operator<<(const T& t) -> AppError;
-	};
-
 	enum class SortAlgoType {
 		BUBBLE,
 		HEAP,
@@ -80,10 +72,4 @@ namespace chm {
 	 */
 	auto selection_sort(std::vector<int>& v) -> void;
 	auto to_string(SortAlgoType t) -> std::string;
-
-	template<typename T> auto AppError::operator<<(const T& t) -> AppError {
-		std::stringstream stream;
-		stream << this->what() << t;
-		return AppError(stream.str());
-	}
 }

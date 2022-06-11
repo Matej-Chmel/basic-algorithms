@@ -1,44 +1,9 @@
 #include "sort_test.hpp"
 #include <algorithm>
 #include <iostream>
-#include <random>
+#include "vector_data.hpp"
 
 namespace chm {
-	auto operator<<(
-		std::ostream& s,
-		const std::vector<int>& v
-	) -> std::ostream& {
-		if(v.empty()) {
-			s << "EMPTY";
-			return s;
-		}
-
-		const auto last_idx = v.size() - 1;
-		s << '[';
-
-		for(size_t i = 0; i < last_idx; i++)
-			s << v[i] << ", ";
-
-		s << v[last_idx] << ']';
-		return s;
-	}
-
-	auto generate_int_vector(
-		const size_t size,
-		const int min,
-		const int max
-	) -> std::vector<int> {
-		std::default_random_engine gen(std::random_device{}());
-		const std::uniform_int_distribution<int> dist(min, max);
-		std::vector<int> res;
-		res.reserve(size);
-
-		for(size_t i = 0; i < size; i++)
-			res.emplace_back(dist(gen));
-
-		return res;
-	}
-
 	auto is_sorted(const std::vector<int>& v) -> bool {
 		return std::is_sorted(v.begin(), v.end());
 	}

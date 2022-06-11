@@ -1,12 +1,11 @@
 #include "sort_algos.hpp"
+#include "vector_data.hpp"
 
 namespace chm {
 	auto build_max_heap(std::vector<int>& v) -> void;
 	auto heapify(std::vector<int>& v, size_t i, size_t n) -> void;
 	auto merge(std::vector<int>& a, std::vector<int>& b) -> std::vector<int>;
 	auto swap(int& a, int& b) noexcept -> void;
-
-	AppError::AppError(const std::string& s) : exception(s.c_str()) {}
 
 	auto bubble_sort(std::vector<int>& v) -> void {
 		for(size_t i = 1; i < v.size(); i++) {

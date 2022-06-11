@@ -62,6 +62,7 @@
 			<ConformanceMode>true</ConformanceMode>
 			<PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
 			<LanguageStandard>stdcpp17</LanguageStandard>
+			<AdditionalIncludeDirectories>$(SolutionDir)VectorData</AdditionalIncludeDirectories>
 		</ClCompile>
 		<Link>
 			<SubSystem>Console</SubSystem>
@@ -80,6 +81,7 @@
 			<ConformanceMode>true</ConformanceMode>
 			<PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
 			<LanguageStandard>stdcpp17</LanguageStandard>
+			<AdditionalIncludeDirectories>$(SolutionDir)VectorData</AdditionalIncludeDirectories>
 		</ClCompile>
 		<Link>
 			<SubSystem>Console</SubSystem>
@@ -96,6 +98,12 @@
 	<ItemGroup>
 		<ClInclude Include="sort_algos.hpp"/>
 		<ClInclude Include="sort_test.hpp"/>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\VectorData\VectorData.vcxproj">
+			<Project>{5a66ea4d-0c15-4eb6-9957-add66c39ff26}</Project>
+			<Name>VectorData</Name>
+		</ProjectReference>
 	</ItemGroup>
 	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
 	<ImportGroup Label="ExtensionTargets">
