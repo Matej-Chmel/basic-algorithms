@@ -7,7 +7,7 @@
 namespace chm {
 	auto operator<<(
 		std::ostream& s,
-		const std::optional<int>& o
+		const std::optional<size_t>& o
 	) -> std::ostream&;
 	/**
 	 * Can be used ONLY on a sorted array.
@@ -46,7 +46,7 @@ namespace chm {
 
 	auto operator<<(
 		std::ostream& s,
-		const std::optional<int>& o
+		const std::optional<size_t>& o
 	) -> std::ostream& {
 		if(o)
 			s << *o;
