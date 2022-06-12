@@ -54,12 +54,15 @@ namespace chm {
 
 		a[0] = 5;
 		check(a[0], 5);
+		check_exception([&] { a[5] = 6; });
 
 		a.remove(0);
 		check(a[0], 2);
+		check_exception([&] { a.remove(6); });
 
 		a.clear();
 		check<size_t>(a.size(), 0);
+		check_exception([&] { a[0]++; });
 	}
 
 	auto Array::check_index(const size_t i) const -> void {

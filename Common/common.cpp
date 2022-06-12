@@ -24,6 +24,15 @@ namespace chm {
 		return s;
 	}
 
+	auto check_exception(const std::function<void()>& f) -> void {
+		try { f(); }
+		catch(const std::exception& e) {
+			std::cout << "Exception thrown as expected: " << e.what() << '\n';
+			return;
+		}
+		throw AppError("Exception not thrown.");
+	}
+
 	auto generate_int(const int min, const int max) -> int {
 		std::default_random_engine gen(std::random_device{}());
 		const std::uniform_int_distribution dist(min, max);
