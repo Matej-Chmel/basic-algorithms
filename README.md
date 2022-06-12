@@ -6,7 +6,7 @@
 - [ ] Graph
 - [ ] Queue
 - [ ] Singly linked list
-- [ ] Stack
+- [x] Stack
 - [ ] Tree
 
 ## Search

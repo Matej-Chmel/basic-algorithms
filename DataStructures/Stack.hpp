@@ -9,14 +9,16 @@ namespace chm {
 		auto operator=(Stack&& other) noexcept -> Stack& = default;
 		auto pop() -> int;
 		auto push(int element) -> void;
-		auto size() -> size_t;
+		[[nodiscard]] auto size() const -> size_t;
 		explicit Stack(size_t capacity);
 		Stack(const Stack& other) = default;
 		Stack(Stack&& other) noexcept = default;
+		static auto test_case() -> void;
+		auto top() const -> int;
 
 	private:
 		size_t capacity;
 		int* data;
-		size_t data_size;
+		size_t data_size{0};
 	};
 }
