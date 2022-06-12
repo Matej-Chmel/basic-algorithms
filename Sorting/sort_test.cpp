@@ -1,7 +1,7 @@
 #include "sort_test.hpp"
 #include <algorithm>
 #include <iostream>
-#include "vector_data.hpp"
+#include "common.hpp"
 
 namespace chm {
 	auto is_sorted(const std::vector<int>& v) -> bool {

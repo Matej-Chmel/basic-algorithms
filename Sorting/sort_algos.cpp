@@ -1,5 +1,5 @@
 #include "sort_algos.hpp"
-#include "vector_data.hpp"
+#include "common.hpp"
 
 namespace chm {
 	auto build_max_heap(std::vector<int>& v) -> void;

@@ -1,5 +1,14 @@
 # Basic algorithms
 
+## Data structures
+- [ ] Array
+- [ ] Doubly linked list
+- [ ] Graph
+- [ ] Queue
+- [ ] Singly linked list
+- [ ] Stack
+- [ ] Tree
+
 ## Search
 - [x] Binary search
 - [x] Sequential search

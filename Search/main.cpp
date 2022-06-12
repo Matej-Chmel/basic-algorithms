@@ -1,8 +1,7 @@
 #include <algorithm>
-#include <cstdlib>
 #include <iostream>
 #include <optional>
-#include "vector_data.hpp"
+#include "common.hpp"
 
 namespace chm {
 	auto operator<<(
@@ -139,11 +138,7 @@ namespace chm {
 }
 
 auto main() -> int {
-	try { chm::run_with_sizes({0, 1, 2, 5, 10, 15, 25}); }
-	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
-		return EXIT_FAILURE;
-	}
-
-	return EXIT_SUCCESS;
+	return chm::wrap_main(
+		[] { chm::run_with_sizes({0, 1, 2, 5, 10, 15, 25}); }
+	);
 }

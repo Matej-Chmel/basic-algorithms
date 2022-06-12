@@ -4,7 +4,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sorting", "Sorting\Sorting.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Search", "Search\Search.vcxproj", "{30912C1E-ADE5-4C45-9FA3-484BCD7F154E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VectorData", "VectorData\VectorData.vcxproj", "{5A66EA4D-0C15-4EB6-9957-ADD66C39FF26}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Common\Common.vcxproj", "{5A66EA4D-0C15-4EB6-9957-ADD66C39FF26}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures", "DataStructures\DataStructures.vcxproj", "{36DC8CFC-5A1D-4FA8-82C3-F6CEFCF44A84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,9 @@ Global
 		{5A66EA4D-0C15-4EB6-9957-ADD66C39FF26}.Debug|x64.Build.0 = Debug|x64
 		{5A66EA4D-0C15-4EB6-9957-ADD66C39FF26}.Release|x64.ActiveCfg = Release|x64
 		{5A66EA4D-0C15-4EB6-9957-ADD66C39FF26}.Release|x64.Build.0 = Release|x64
+		{36DC8CFC-5A1D-4FA8-82C3-F6CEFCF44A84}.Debug|x64.ActiveCfg = Debug|x64
+		{36DC8CFC-5A1D-4FA8-82C3-F6CEFCF44A84}.Debug|x64.Build.0 = Debug|x64
+		{36DC8CFC-5A1D-4FA8-82C3-F6CEFCF44A84}.Release|x64.ActiveCfg = Release|x64
+		{36DC8CFC-5A1D-4FA8-82C3-F6CEFCF44A84}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 EndGlobal

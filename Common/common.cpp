@@ -1,4 +1,6 @@
-#include "vector_data.hpp"
+#include "common.hpp"
+#include <cstdlib>
+#include <iostream>
 #include <random>
 
 namespace chm {
@@ -49,5 +51,14 @@ namespace chm {
 		auto copy = v;
 		std::sort(copy.begin(), copy.end());
 		return copy;
+	}
+
+	auto wrap_main(const std::function<void()>& f) -> int {
+		try { f(); }
+		catch(const AppError& e) {
+			std::cerr << e.what() << '\n';
+			return EXIT_FAILURE;
+		}
+		return EXIT_SUCCESS;
 	}
 }
