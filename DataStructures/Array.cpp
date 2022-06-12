@@ -50,7 +50,7 @@ namespace chm {
 		check(a[2], 3);
 		check(a[3], 4);
 		check(a[4], 5);
-		check(static_cast<int>(a.size()), 5);
+		check<size_t>(a.size(), 5);
 
 		a[0] = 5;
 		check(a[0], 5);
@@ -59,7 +59,7 @@ namespace chm {
 		check(a[0], 2);
 
 		a.clear();
-		check(static_cast<int>(a.size()), 0);
+		check<size_t>(a.size(), 0);
 	}
 
 	auto Array::check_index(const size_t i) const -> void {

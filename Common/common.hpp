@@ -1,5 +1,6 @@
 #pragma once
 #include <functional>
+#include <iostream>
 #include <ostream>
 #include <sstream>
 #include <vector>
@@ -15,7 +16,7 @@ namespace chm {
 		std::ostream& s,
 		const std::vector<int>& v
 	) -> std::ostream&;
-	auto check(int actual, int expected) -> void;
+	template<typename T> auto check(T actual, T expected) -> void;
 	auto generate_int(int min, int max) -> int;
 	auto generate_int_vector(size_t size, int min, int max) -> std::vector<int>;
 	auto sorted(const std::vector<int>& v) -> std::vector<int>;
@@ -25,5 +26,17 @@ namespace chm {
 		std::stringstream stream;
 		stream << this->what() << t;
 		return AppError(stream.str());
+	}
+
+	template<typename T> auto check(const T actual, const T expected) -> void {
+		const auto equals = actual == expected;
+		std::stringstream s;
+		s << std::to_string(actual) << (equals ? " == " : " != ") <<
+			std::to_string(expected) << '\n';
+
+		if(equals)
+			std::cout << s.str();
+		else
+			throw AppError(s.str());
 	}
 }

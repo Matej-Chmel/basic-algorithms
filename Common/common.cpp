@@ -1,6 +1,5 @@
 #include "common.hpp"
 #include <cstdlib>
-#include <iostream>
 #include <random>
 
 namespace chm {
@@ -23,17 +22,6 @@ namespace chm {
 
 		s << v[last_idx] << ']';
 		return s;
-	}
-
-	auto check(const int actual, const int expected) -> void {
-		const auto equals = actual == expected;
-		std::stringstream s;
-		s << std::to_string(actual) << (equals ? " == " : " != ") << std::to_string(expected) << '\n';
-
-		if(equals)
-			std::cout << s.str();
-		else
-			throw AppError(s.str());
 	}
 
 	auto generate_int(const int min, const int max) -> int {
