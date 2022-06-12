@@ -1,7 +1,7 @@
 # Basic algorithms
 
 ## Data structures
-- [ ] Array
+- [x] Array
 - [ ] Doubly linked list
 - [ ] Graph
 - [ ] Queue

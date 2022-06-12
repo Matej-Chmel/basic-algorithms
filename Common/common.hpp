@@ -15,6 +15,7 @@ namespace chm {
 		std::ostream& s,
 		const std::vector<int>& v
 	) -> std::ostream&;
+	auto check(int actual, int expected) -> void;
 	auto generate_int(int min, int max) -> int;
 	auto generate_int_vector(size_t size, int min, int max) -> std::vector<int>;
 	auto sorted(const std::vector<int>& v) -> std::vector<int>;
