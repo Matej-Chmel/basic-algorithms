@@ -4,14 +4,14 @@
 - [x] Array
 - [ ] Doubly linked list
 - [ ] Graph
-- [ ] Queue
+- [x] Queue
 - [ ] Singly linked list
 - [x] Stack
 - [ ] Tree
 
 ## Search
 - [x] Binary search
-- [x] Sequential search
+- [x] Linear search
 
 ## Sorting
 - [x] Bubble sort

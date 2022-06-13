@@ -9,7 +9,7 @@ namespace chm {
 	auto Array::linear_search(const int t) const -> std::optional<int> {
 		for(size_t i = 0; i < size(); i++)
 			if(operator[](i) == t)
-				return i;
+				return static_cast<int>(i);
 		return std::nullopt;
 	}
 
@@ -44,6 +44,7 @@ namespace chm {
 	auto Array::size() const -> size_t { return data_size; }
 
 	auto Array::test_case() -> void {
+		std::cout << "Array\n";
 		Array a{};
 
 		a.push_back(1);
@@ -72,6 +73,7 @@ namespace chm {
 		a.clear();
 		check<size_t>(a.size(), 0);
 		check_exception([&] { a[0]++; });
+		std::cout << '\n';
 	}
 
 	auto Array::check_index(const size_t i) const -> void {

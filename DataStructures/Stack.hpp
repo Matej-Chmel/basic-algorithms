@@ -3,7 +3,7 @@
 
 namespace chm {
 	/**
-	 * Linear data structure based on LIFO (Last In, First Out) principle.
+	 * Linear data structure based on LIFO principle (Last In, First Out).
 	 *
 	 * Complexity of operations:
 	 *
@@ -20,7 +20,7 @@ namespace chm {
 	public:
 		~Stack();
 		auto clear() -> void;
-		[[nodiscard]] auto linear_search(int t) -> std::optional<int>;
+		[[nodiscard]] auto linear_search(int t) -> std::optional<size_t>;
 		auto operator=(const Stack& other) -> Stack& = default;
 		auto operator=(Stack&& other) noexcept -> Stack& = default;
 		auto pop() -> int;

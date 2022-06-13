@@ -6,14 +6,14 @@ namespace chm {
 
 	auto Stack::clear() -> void { data_size = 0; }
 
-	auto Stack::linear_search(const int t) -> std::optional<int> {
+	auto Stack::linear_search(const int t) -> std::optional<size_t> {
 		Stack copy{capacity};
 		const auto original_size = size();
-		std::optional<int> res = std::nullopt;
+		std::optional<size_t> res = std::nullopt;
 
 		for(size_t i = 0; i < original_size; i++) {
 			if(top() == t) {
-				res = static_cast<int>(i);
+				res = i;
 				break;
 			}
 			copy.push(pop());
@@ -27,8 +27,7 @@ namespace chm {
 	auto Stack::pop() -> int {
 		if(!data_size)
 			throw AppError("No elements to pop.");
-		const auto res = data[--data_size];
-		return res;
+		return data[--data_size];
 	}
 
 	auto Stack::push(const int element) -> void {
@@ -43,6 +42,7 @@ namespace chm {
 		: capacity{capacity}, data{new int[capacity]} {}
 
 	auto Stack::test_case() -> void {
+		std::cout << "Stack\n";
 		Stack s{4};
 
 		check_exception([&] { s.pop(); });
@@ -54,9 +54,9 @@ namespace chm {
 		s.push(4);
 
 		check_exception([&] { s.push(5); });
-		check<std::optional<int>>(s.linear_search(2), 2);
-		check<std::optional<int>>(s.linear_search(3), 1);
-		check<std::optional<int>>(s.linear_search(5), std::nullopt);
+		check<std::optional<size_t>>(s.linear_search(2), 2);
+		check<std::optional<size_t>>(s.linear_search(3), 1);
+		check<std::optional<size_t>>(s.linear_search(5), std::nullopt);
 
 		check(s.top(), 4);
 		check(s.pop(), 4);
@@ -72,12 +72,12 @@ namespace chm {
 		check<size_t>(s.size(), 4);
 		s.clear();
 		check<size_t>(s.size(), 0);
+		std::cout << '\n';
 	}
 
 	auto Stack::top() const -> int {
 		if(!data_size)
 			throw AppError("Stack is empty.");
-		const auto res = data[data_size - 1];
-		return res;
+		return data[data_size - 1];
 	}
 }

@@ -93,10 +93,12 @@
 	<ItemGroup>
 		<ClCompile Include="Array.cpp"/>
 		<ClCompile Include="main.cpp"/>
+		<ClCompile Include="Queue.cpp"/>
 		<ClCompile Include="Stack.cpp"/>
 	</ItemGroup>
 	<ItemGroup>
 		<ClInclude Include="Array.hpp"/>
+		<ClInclude Include="Queue.hpp"/>
 		<ClInclude Include="Stack.hpp"/>
 	</ItemGroup>
 	<ItemGroup>
