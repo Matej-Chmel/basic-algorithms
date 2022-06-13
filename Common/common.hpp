@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <iostream>
+#include <optional>
 #include <ostream>
 #include <sstream>
 #include <vector>
@@ -16,6 +17,10 @@ namespace chm {
 		std::ostream& s,
 		const std::vector<int>& v
 	) -> std::ostream&;
+	template<typename T> auto operator<<(
+		std::ostream& s,
+		const std::optional<T>& o
+	) -> std::ostream&;
 	template<typename T> auto check(T actual, T expected) -> void;
 	auto check_exception(const std::function<void()>& f) -> void;
 	auto generate_int(int min, int max) -> int;
@@ -29,11 +34,21 @@ namespace chm {
 		return AppError(stream.str());
 	}
 
+	template<typename T> auto operator<<(
+		std::ostream& s,
+		const std::optional<T>& o
+	) -> std::ostream& {
+		if(o)
+			s << *o;
+		else
+			s << "nullopt";
+		return s;
+	}
+
 	template<typename T> auto check(const T actual, const T expected) -> void {
 		const auto equals = actual == expected;
 		std::stringstream s;
-		s << std::to_string(actual) << (equals ? " == " : " != ") <<
-			std::to_string(expected) << '\n';
+		s << actual << (equals ? " == " : " != ") << expected << '\n';
 
 		if(equals)
 			std::cout << s.str();

@@ -4,10 +4,6 @@
 #include "common.hpp"
 
 namespace chm {
-	auto operator<<(
-		std::ostream& s,
-		const std::optional<size_t>& o
-	) -> std::ostream&;
 	/**
 	 * Can be used ONLY on a sorted array.
 	 *
@@ -42,17 +38,6 @@ namespace chm {
 		const std::vector<int>& v,
 		int target
 	) -> std::optional<size_t>;
-
-	auto operator<<(
-		std::ostream& s,
-		const std::optional<size_t>& o
-	) -> std::ostream& {
-		if(o)
-			s << *o;
-		else
-			s << "nullopt";
-		return s;
-	}
 
 	auto binary_search(
 		const std::vector<int>& v,

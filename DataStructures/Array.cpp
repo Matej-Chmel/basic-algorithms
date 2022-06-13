@@ -6,6 +6,13 @@ namespace chm {
 
 	auto Array::clear() -> void { data_size = 0; }
 
+	auto Array::linear_search(const int t) const -> std::optional<int> {
+		for(size_t i = 0; i < size(); i++)
+			if(operator[](i) == t)
+				return i;
+		return std::nullopt;
+	}
+
 	auto Array::operator[](const size_t i) const -> int& {
 		check_index(i);
 		return data[i];
@@ -45,6 +52,8 @@ namespace chm {
 		a.push_back(4);
 		a.push_back(5);
 
+		check<std::optional<int>>(a.linear_search(3), 2);
+		check<std::optional<int>>(a.linear_search(6), std::nullopt);
 		check(a[0], 1);
 		check(a[1], 2);
 		check(a[2], 3);

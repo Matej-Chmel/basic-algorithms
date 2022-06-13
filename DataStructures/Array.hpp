@@ -1,11 +1,12 @@
 #pragma once
+#include <optional>
 
 namespace chm {
 	constexpr size_t DEFAULT_CAPACITY = 4;
 
 	/**
 	 * Resizable array.
-	 * Data structure based on random (direct) access.
+	 * Linear data structure based on random (direct) access.
 	 * Common building block of other data structures.
 	 *
 	 * Complexity of operations:
@@ -25,6 +26,10 @@ namespace chm {
 	 * Always, space = O(1)
 	 * Best case, last element, time = O(1)
 	 * Avg case, any other element, time = O(n)
+	 *
+	 * Linear search
+	 * Always, space = O(1)
+	 * Avg case, time = O(n)
 	 */
 	class Array {
 	public:
@@ -33,6 +38,7 @@ namespace chm {
 		Array(const Array& other) = default;
 		Array(Array&& other) noexcept = default;
 		auto clear() -> void;
+		[[nodiscard]] auto linear_search(int t) const -> std::optional<int>;
 		auto operator=(const Array& other) -> Array& = default;
 		auto operator=(Array&& other) noexcept -> Array& = default;
 		auto operator[](size_t i) const -> int&;
