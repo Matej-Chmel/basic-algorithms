@@ -5,7 +5,7 @@
 - [ ] Doubly linked list
 - [ ] Graph
 - [x] Queue
-- [ ] Singly linked list
+- [x] Singly linked list
 - [x] Stack
 - [ ] Tree
 

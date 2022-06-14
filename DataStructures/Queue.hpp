@@ -20,7 +20,7 @@ namespace chm {
 	public:
 		~Queue();
 		auto clear() -> void;
-		[[nodiscard]] auto dequeue() -> int;
+		auto dequeue() -> int;
 		auto enqueue(int element) -> void;
 		[[nodiscard]] auto linear_search(int target) -> std::optional<int>;
 		auto operator=(const Queue& other) -> Queue& = default;
